@@ -4,7 +4,7 @@
 
 ![cropped image of a complex sankey chart visualization](img/complex_demo.png)
 
-Visualizing different error categories in code as an interactive sankey chart. Originally created as part of my master thesis in the group on [Artificial Intelligence for Programming (AIP)](https://aip.ifi.uni-heidelberg.de/home) at [Heidelberg University](https://www.uni-heidelberg.de/en).
+Visualizing different error categories in code as an interactive sankey chart. Originally created as part of my master thesis in the group on [Artificial Intelligence for Programming (AIP)](https://aip.ifi.uni-heidelberg.de/home) at [Heidelberg University](https://www.uni-heidelberg.de/en). You can access this tool [here](https://imkgerc.github.io/sankey-errors/)!
 
 The webpage can be used to see changes between different revisions of, for example, a code-to-code translation model. 
 
