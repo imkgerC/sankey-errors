@@ -15,10 +15,7 @@ event => {
     let data = JSON.parse(load_event.target.result);
     console.log(data, myChart);
     myChart.setOption(
-      (option = {
-        title: {
-          text: "Error Categories"
-        },
+      (option = {        
         layoutIterations: 0,
         draggable: false,
         tooltip: {
