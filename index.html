@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errors in Categories</title>
+
+    <!-- echarts for showing sankey chart -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css"
+    />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        #chart {
+            width: 80vw;
+            height: 100vh;
+            margin-left: 10vw;
+        }
+        .code {
+            width: 50%;
+            display: inline-block;
+        }
+        .code > * {
+            padding-left: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="data" name="data" accept="application/json" />
+    <div id="chart"></div>
+    <div id="myDiffElement"></div>
+    <script src="index.js"></script>
+</body>
+</html>
