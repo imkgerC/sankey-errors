@@ -1,7 +1,6 @@
 # Sankey-Errors
 
-> ⚠️ This is not a sophisticated project that will not be maintained in any way.
-> This serves as a quick demonstration and analysis tool in the broader context of a bigger project. You might still find this helpful.
+> ⚠️ This project will not be maintained, feel free to fork for changes.
 
 ![cropped image of a complex sankey chart visualization](img/complex_demo.png)
 
