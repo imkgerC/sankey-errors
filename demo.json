@@ -1,0 +1,31 @@
+{
+    "nodes": [
+        {"name": "original/Success", "value": 2, "depth": 0},
+        {"name": "original/Error", "value": 2, "depth": 0},
+        {"name": "fixed/Success", "value": 4, "depth": 1}
+    ],
+    "links": [
+        {
+            "source": "original/Success",
+            "target": "fixed/Success",
+            "value": 2,
+            "changes": [
+                {"diff": ""},
+                {"diff": ""}
+            ]
+        },
+        {
+            "source": "original/Error",
+            "target": "fixed/Success",
+            "value": 2,
+            "changes": [
+                {
+                    "diff": "diff --git a/./original/demo1.c b/./fixed/demo1.c\nindex e3488e9..6c9765e 100644\n--- a/./original/demo1.c\n+++ b/./fixed/demo1.c\n@@ -1,3 +1,3 @@\n int solution(int n) {\n-    ((n + 1) * n) / 2\n+    return ((n + 1) * n) / 2;\n }\n\\ No newline at end of file"
+                },
+                {
+                    "diff": "diff --git a/./original/demo2.c b/./fixed/demo2.c\nindex 3a49747..01e49df 100644\n--- a/./original/demo2.c\n+++ b/./fixed/demo2.c\n@@ -1,3 +1,3 @@\n int solution(int n) {\n-    n * n\n+    return n * n;\n }\n\\ No newline at end of file"
+                }
+            ]
+        }
+    ]
+}
