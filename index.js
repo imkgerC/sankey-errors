@@ -1,6 +1,6 @@
 var chartDom = document.getElementById("chart");
 var codeDom = document.getElementById("code");
-var myChart = echarts.init(chartDom);
+var myChart = echarts.init(chartDom, null, {renderer: "svg"});
 var option;
 
 
@@ -17,7 +17,6 @@ event => {
     myChart.setOption(
       (option = {        
         layoutIterations: 0,
-        draggable: false,
         tooltip: {
           trigger: "item",
           triggerOn: "mousemove"
@@ -25,11 +24,19 @@ event => {
         animation: false,
         series: [
           {
+            draggable: false,
             type: "sankey",
             data: data.nodes,
             links: data.links,
             emphasis: {
                 focus: "adjacency"
+            },
+            label: {
+              overflow: "break",
+            },
+            labelLayout: {
+              width: 60,
+
             },
             lineStyle: {
                 color: "source",
