@@ -1,58 +1,63 @@
 var chartDom = document.getElementById("chart");
 var codeDom = document.getElementById("code");
-var myChart = echarts.init(chartDom, null, {renderer: "svg"});
-var option;
+var sankeyChart = echarts.init(chartDom, null, {renderer: "svg"});
+var data = null;
 
+function redrawSankey() {
+  if (!data) return;
+  sankeyChart.setOption({
+    tooltip: {
+      trigger: "item",
+      triggerOn: "mousemove"
+    },
+    animation: false,
+    series: [
+      {
+        layoutIterations: 0,
+        draggable: false,
+        type: "sankey",
+        data: data.nodes,
+        links: data.links,
+        emphasis: {
+            focus: "adjacency"
+        },
+        label: {
+          overflow: "break",
+        },
+        labelLayout: {
+          width: 60,
 
-document.getElementById("data").addEventListener("change",
-event => {
+        },
+        lineStyle: {
+            color: "source",
+            opacity: 0.6,
+            curveness: 0.5,
+        }
+      }
+    ]
+  });
+}
+
+document.getElementById("data").addEventListener("change", event => {
   let file = event.target.files[0];
   
   let reader = new FileReader();
   reader.readAsText(file, "UTF-8");
 
   reader.onload = (load_event) => {
-    let data = JSON.parse(load_event.target.result);
-    console.log(data, myChart);
-    myChart.setOption(
-      (option = {        
-        layoutIterations: 0,
-        tooltip: {
-          trigger: "item",
-          triggerOn: "mousemove"
-        },
-        animation: false,
-        series: [
-          {
-            draggable: false,
-            type: "sankey",
-            data: data.nodes,
-            links: data.links,
-            emphasis: {
-                focus: "adjacency"
-            },
-            label: {
-              overflow: "break",
-            },
-            labelLayout: {
-              width: 60,
-
-            },
-            lineStyle: {
-                color: "source",
-                opacity: 0.6,
-                curveness: 0.5,
-            }
-          }
-        ]
-      })
-    );
+    data = JSON.parse(load_event.target.result);
+    redrawSankey();
   };
-  });
+});
 
-myChart.on("click", event => {
-  let data = event.data;
-  let changes = data.changes
+window.addEventListener("resize", evt => {
+  sankeyChart.resize();
+});
+
+
+// Click to get the diff
+sankeyChart.on("click", event => {
+  let changes = event.data.changes;
   
   let diffString = "";
 
@@ -75,4 +80,6 @@ myChart.on("click", event => {
   let diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
   diff2htmlUi.draw();
   diff2htmlUi.highlightCode();
+
+  targetElement.scrollIntoView();
 });
